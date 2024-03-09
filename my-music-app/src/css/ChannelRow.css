@@ -1,0 +1,18 @@
+.channelRow{
+    display: flex;
+    flex:0.1;
+}
+
+.channelRow_info > p{
+    font-size: 13px;
+    margin: 8px 0 ;
+    color: gray;
+}
+
+.channelRow_info{
+    margin:15px 50px;
+}
+
+.channelRow_logo > img{
+    border-radius: 50%;
+}

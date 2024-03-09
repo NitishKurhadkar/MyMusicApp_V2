@@ -1,0 +1,23 @@
+.navbar{
+    border-right: 1px solid rgb(108,117,125);
+} 
+
+.App{
+    background:#1c1c1e;
+    height: 100vh;
+}
+
+
+.overflow-auto::-webkit-scrollbar {
+    height: 0;
+    width: 13px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+    background-color:#484848;
+}
+
+.banner{
+    background: linear-gradient(to right, #06dcd1, #5665f6);
+    height: 300px;
+}

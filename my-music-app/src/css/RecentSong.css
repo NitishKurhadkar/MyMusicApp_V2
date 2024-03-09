@@ -1,0 +1,9 @@
+.recent_played img{
+     width: 225px;
+     height: 225px;
+     border-radius: 50%;
+}
+
+/* .recent_played ::-webkit-scrollbar{
+    display: none;
+} */

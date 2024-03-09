@@ -1,0 +1,36 @@
+.searchbar{
+    background: #353535;
+    border-radius: 22px;
+    border: none;
+    min-width: 280px;
+    outline: none;
+    top: 8px;
+    z-index: 2;
+    color: #ffff;
+}
+
+.searchbox .audiocard img {
+    min-height: 134px;
+    max-height: 134px;
+}
+
+.searchbox .audiocard{
+    background: rgb(24, 24, 24);
+}
+
+.searchbox .grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+
+.searchbox>p{
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 720px) {
+    .searchbox h4 {
+        margin-top: 42px;
+    }
+}

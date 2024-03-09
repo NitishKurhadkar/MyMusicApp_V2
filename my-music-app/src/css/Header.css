@@ -1,0 +1,8 @@
+.header{
+    position: fixed;
+    z-index: 1;
+    background-color: transparent;
+    top: 0;
+    backdrop-filter: blur(50px);
+    width: calc(100% - 13px);
+}

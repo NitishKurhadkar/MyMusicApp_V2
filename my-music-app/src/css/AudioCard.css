@@ -1,0 +1,55 @@
+/* .audiocard{
+    display: flex;
+    align-items: center;
+    width: 270px;
+    margin-bottom: 20px;
+    background-color: #161A1A;
+    color:#ffff;
+} */
+
+.audiocard:hover{
+    background: #282828 !important;
+}
+
+/* .audiocard_title > h5{
+    margin: 0 0 0 8px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+} */
+
+.audiocard{
+    cursor: pointer;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    grid-column-gap: 15px;
+    grid-row-gap: 20px;
+}
+
+.audiocard img{
+    min-height: 185px;
+}
+
+@media (max-width: 720px){
+    .audiocard{
+        width: 170px;
+        height: 210px;
+    }
+
+    .audiocard img{
+        width: 140px;
+        height: 140px;
+        min-height: 140px;
+    }
+
+    .songContainer{
+        position: absolute;
+        bottom: 62px;
+    }
+}

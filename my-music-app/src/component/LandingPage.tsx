@@ -1,0 +1,44 @@
+"use client"
+import Header from "@/component/Header";
+import NavbarMobile from "@/component/Mobile/NavbarMobile";
+import Navbar from "@/component/Navbar";
+import { useStateValue } from '@/context/StateProvider';
+import AudioController from "@/component/AudioController";
+import RecommandedAudios from "@/component/RecommandedAudios";
+import { StateProvider } from "@/context/StateProvider";
+import reducer, { initialState } from '@/context/reducer';
+
+const CommonComponents = ({ children }: { children: React.ReactNode }) => {
+     const [state] = useStateValue();
+     console.log(state, children,"state")
+     const height = state.currentSongIndex !== null ? { height: 'calc( 100% - 71px)' } : { height: '100%' };
+    return (
+        <>
+        <Header />
+        <div className="d-flex" style={height}>
+                {/* {window.innerWidth < 720 ?
+                    <NavbarMobile /> : <Navbar />
+                } */}
+                {children}
+                <RecommandedAudios />
+            </div>
+            {/* <Header />
+            <div className="d-flex" style={height}>
+                {window.innerWidth < 720 ?
+                    <NavbarMobile /> : <Navbar />
+                }
+                {children}
+                <RecommandedAudios />
+            </div>
+            {state.currentSongIndex !== null ? <AudioController /> : null} */}
+        </>
+    )
+}
+const LandingPage = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <StateProvider initialState={initialState} reducer={reducer}>
+            <CommonComponents>{children}</CommonComponents>
+        </StateProvider>
+    )
+}
+export default LandingPage

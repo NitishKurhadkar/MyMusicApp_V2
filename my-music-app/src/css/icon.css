@@ -1,0 +1,56 @@
+.play{
+    background-position: center;
+    background-size: contain;
+    position: relative;
+    border-radius: 50%;
+    width: 24px;
+}
+
+.pause::before{
+    content: "";
+    background: url("../icon/equaliser.gif");
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    background-size: contain;
+    top: 6px;
+    left: 5.5px;
+}
+
+.play::after{
+    content:"";
+    background:url(../icon/play.svg) ;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    background-size: contain;
+    top: 6px;
+    left: 6.5px;
+    display: none;
+}
+
+ .audiocard:hover .pause::before{
+    background:url(../icon/pause.svg); 
+    width: 18px;
+    left: 0.5px; 
+}
+
+.pause{
+    background-position: center;
+    background-size: contain;
+    position: relative;
+    border-radius: 50%;
+    color: transparent;
+    width: 24px;
+}
+
+.pause::after{
+    content:"";
+    /* background:url(../icon/pause.svg) ; */
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    background-size: contain;
+    top: 6px;
+    left: 5.5px;
+}

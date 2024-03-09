@@ -1,0 +1,22 @@
+.songdetails {
+    background-color: #3A3A3D;
+    z-index: 2;
+    border-radius: 15px 15px 0 0;
+    animation: expand 0.8s forwards;
+    -webkit-animation: expand 0.8s forwards;
+    position: fixed;
+}
+
+.songdetails img {
+    width: 70%;
+    width: 70%;
+}
+
+@keyframes expand {
+    0% {
+        top: 800px;
+    }
+    100% {
+        top: 0;
+    }
+}
