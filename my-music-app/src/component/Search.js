@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+"use client"
+import { useState, useEffect } from 'react';
 import { useStateValue } from "../context/StateProvider";
-import { withRouter } from 'react-router';
 import { togglePlay } from './helper';
-import '../css/Search.css';
-import axios from 'axios';
+import '@/css/Search.css';
+import axios from '@/utility/axios';
+import { useRouter } from 'next/navigation';
 
-const Search = ({ history }) => {
+const Search = () => {
     const [inputSearch, setInputSearch] = useState("");
     const [state, dispatch] = useStateValue();
+    const router = useRouter();
 
     useEffect(() => {
         if (inputSearch === "") {
@@ -43,7 +45,7 @@ const Search = ({ history }) => {
     }
 
     const openPlaylist = (playlistName, albumName) => {
-        history.push(`/browse/playlist/${playlistName}/${albumName}`);
+        router.push(`/browse/playlist/${playlistName}/${albumName}`);
     }
     return (
         <div className="px-3 pb-3 px-md-4 px-lg-4 mt-3 w-100 overflow-auto searchbox">
@@ -59,9 +61,9 @@ const Search = ({ history }) => {
                                 <h4 className="text-white">Songs</h4>
                                 <div className="grid pt-1">
                                     {
-                                        state.searchSongList.map((song) => {
+                                        state.searchSongList.map((song, index) => {
                                             return (
-                                                <div className="p-3 rounded-3 audiocard">
+                                                <div key={song.name + index} className="p-3 rounded-3 audiocard">
                                                     <img className="rounded-3 w-100" src={song.img} alt="" onClick={() => addSongToPlaylist(song)} />
                                                     <p className="pt-2 text-white text-truncate mb-0" title={song.name}>{song.name}</p>
                                                 </div>)
@@ -107,4 +109,4 @@ const Search = ({ history }) => {
     )
 }
 
-export default withRouter(Search);
+export default Search;

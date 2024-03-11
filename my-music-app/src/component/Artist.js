@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import '../css/Artist.css'
-import axios from 'axios';
-const Artist = ({history}) => {
+"use client"
+import { useEffect, useState } from 'react';
+import '@/css/Artist.css';
+import '@/css/AudioCard.css';
+import axios from '@/utility/axios';
+import { useRouter } from 'next/navigation';
+const Artist = () => {
     const [playlist, setPlaylist] = useState(null);
+    const router  = useRouter();
     useEffect(() => {
         axios.get('/artist')
         .then(res=>{
@@ -10,7 +14,7 @@ const Artist = ({history}) => {
         })
     }, [])
     const openPlaylist = (playlistName, albumName) => {
-        history.push(`/browse/playlist/${playlistName}/${albumName}`);
+        router.push(`/browse/playlist/${playlistName}/${albumName}`);
     }
     return (
         <div className="px-3 pb-3 px-md-4 px-lg-4 mt-3 w-100 overflow-auto artist">

@@ -1,11 +1,14 @@
 import React from 'react';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { useRouter } from 'next/navigation';
 
-const AudioList = ({ playlist, history, listName, album }) => {
-
+const AudioList = ({ playlist, listName, album }) => {
+    
+    const router = useRouter()
+    
     const openPlaylist = (playlistName, albumName) => {
-        history.push(`/browse/playlist/${playlistName}/${albumName}`);
+        router.push(`/browse/playlist/${playlistName}/${albumName}`);
     }
 
     const scrollLeft = (e) => {

@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import RecentSong from './RecentSong';
 import { useStateValue } from '../context/StateProvider';

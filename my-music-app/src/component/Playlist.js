@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { withRouter } from "react-router";
-import axios from 'axios';
+"use client";
+import { useState, useEffect } from 'react';
+import axios from '@/utility/axios';
 import AudioCard from './AudioCard';
 
-const PlayList = ({ location, match, history }) => {
+const PlayList = () => {
     const [playlist, setPlaylist] = useState(null);
 
     useEffect(() => {
@@ -32,4 +32,4 @@ const PlayList = ({ location, match, history }) => {
     )
 }
 
-export default withRouter(PlayList);
+export default PlayList;

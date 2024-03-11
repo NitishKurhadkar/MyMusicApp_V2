@@ -105,3 +105,68 @@ a {
     color-scheme: dark;
   }
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+@font-face {
+    font-family: lato-bold;
+    src: url(../css/font/Lato-Bold.ttf);
+  }
+  
+  @font-face {
+    font-family: lato-regular;
+    src: url(../css/font/Lato-Regular.ttf);
+  }
+  html, body{
+    height: 100%;
+    background-color: #161A1A !important;  
+    overflow: hidden;
+  }
+  
+  .f-lato-r{
+    font-family: lato-regular !important;
+  }
+  
+  .f-lato-b{
+    font-family: lato-bold !important;
+  }
+  
+  
+  .p-10{
+    padding: 10px !important;
+  }
+  .px-10{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
+  .px-100{
+    padding-left: 100px !important;
+    padding-right: 100px !important;
+  }
+  
+  .w-100px{
+    width: 100px !important;
+  }
+  
+  
+  .f-14{
+    font-size: 14px !important;
+  }
+  
+  .f-16{
+    font-size: 16px !important;
+  }
+  
+  .f-24{
+    font-size: 24px !important;
+  }
+  
+  .f-35{
+    font-size: 35px !important;
+  }

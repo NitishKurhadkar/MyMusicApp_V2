@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
+"use client"
+import { useEffect, useState, useRef } from 'react';
 import Slider from '@mui/material/Slider';
 import VolumeDownIcon from '@mui/icons-material/VolumeDown';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
@@ -12,7 +13,7 @@ import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import CircularProgress from '@mui/material/CircularProgress';
 import { togglePlay } from './helper';
-import axios from 'axios';
+import axios from '@/utility/axios';
 import "../css/AudioController.css";
 import '../css/icon.css';
 import SongDetails from './Mobile/SongDetails';
@@ -83,9 +84,9 @@ function AudioController() {
     }
 
     const timeUpdate = (event) => {
-        if(audioEl.current.duration > 0)
+        if (audioEl.current.duration > 0)
             setIsLoading(false)
-        
+
         if (!isSeeking)
             setSongPlayingTime(event.target.currentTime)
     }
@@ -111,31 +112,34 @@ function AudioController() {
 
     const showSongCard = (e) => {
         const controlButton = e.target.closest(".control_buttons");
-        if(window.innerWidth < 720 && controlButton === null)
-           setIsShowSongCard(!isShowSongCard)
+        if (window.innerWidth < 720 && controlButton === null)
+            setIsShowSongCard(!isShowSongCard)
     }
 
     useEffect(() => {
-        if (state.playStatus) {
-            audioEl.current.play()
-            .then(res=>  axios.post('saveSongDuration', {name: state.playlist[state.currentSongIndex].name, duration : audioEl.current.duration}))
-    
-            if (state.playlistName !== "recently") {
-                dispatch({
-                    type: "RECENTLY_PLAYED_SONG",
-                    index: state.playlist[state.currentSongIndex]
-                })
+        if (audioEl.current) {
+            if (state.playStatus) {
+                audioEl.current.play()
+                    .then(res => axios.post('saveSongDuration', { name: state.playlist[state.currentSongIndex].name, duration: audioEl.current.duration }))
+
+                if (state.playlistName !== "recently") {
+                    dispatch({
+                        type: "RECENTLY_PLAYED_SONG",
+                        index: state.playlist[state.currentSongIndex]
+                    })
+                }
+            }
+            else {
+                audioEl.current.pause();
             }
         }
-        else {
-            audioEl.current.pause();
-        }
-        
     }, [state.playStatus, state.playingSongId])
 
+    if (!state.playlist[state.currentSongIndex]) return;
+
     return (<>
-    {isShowSongCard ?
-        <SongDetails audioEl={audioEl} songTime={songTimeConvertInMinAndSec(songPlayingTime)} isShowSongCard={showSongCard}/>: null}
+        {isShowSongCard ?
+            <SongDetails audioEl={audioEl} songTime={songTimeConvertInMinAndSec(songPlayingTime)} isShowSongCard={showSongCard} /> : null}
         <div className="songContainer p-3 text-white w-100 d-flex justify-content-between" onClick={showSongCard}>
             {state.playlist !== undefined && state.playlist.length !== 0 ?
                 <audio ref={audioEl} src={state.playlist[state.currentSongIndex].url} onTimeUpdate={timeUpdate} onEnded={playNextSong}></audio> : null
@@ -149,18 +153,18 @@ function AudioController() {
                 </div>
                 {window.innerWidth > 720 ? state.likedSongPlaylist.some((song) => song.id === state.playlist[state.currentSongIndex].id) ?
                     <FavoriteIcon className="ms-3 text-danger" onClick={dislikeSong} /> :
-                    <FavoriteBorderIcon className="ms-3" onClick={likeSong} />: null
+                    <FavoriteBorderIcon className="ms-3" onClick={likeSong} /> : null
                 }
             </div>
             <div className="d-flex flex-column justify-content-center w-30 audio_controller">
                 <div className="d-flex align-items-center justify-content-between w-100px m-auto control_buttons">
                     <SkipPreviousIcon onClick={playPrevSong} />
-                    {isLoading ? 
-                         <CircularProgress style={{width: "25px", height: "25px"}}/> :
-                       state.playStatus ?
-                        <PauseIcon onClick={() => togglePlay(state, dispatch, state.playlist[state.currentSongIndex].id, state.currentSongIndex)} />
-                        : <PlayArrowIcon onClick={() => togglePlay(state, dispatch, state.playlist[state.currentSongIndex].id, state.currentSongIndex)} />
-                        }
+                    {isLoading ?
+                        <CircularProgress style={{ width: "25px", height: "25px" }} /> :
+                        state.playStatus ?
+                            <PauseIcon onClick={() => togglePlay(state, dispatch, state.playlist[state.currentSongIndex].id, state.currentSongIndex)} />
+                            : <PlayArrowIcon onClick={() => togglePlay(state, dispatch, state.playlist[state.currentSongIndex].id, state.currentSongIndex)} />
+                    }
                     <SkipNextIcon onClick={playNextSong} /></div>
                 <div className="seekbar_container w-100">
                     {window.innerWidth > 720 ?
@@ -186,8 +190,8 @@ function AudioController() {
                     <label>{audioEl.current !== null ? parseInt(audioEl.current.volume * 100) : 100}</label>
                 </div> : null}
         </div>
-        </>
-        
+    </>
+
     )
 }
 

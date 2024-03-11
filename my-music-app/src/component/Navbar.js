@@ -1,35 +1,39 @@
 import React from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import { NavLink } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import AlbumIcon from '@mui/icons-material/Album';
+import Upload from "@mui/icons-material/Upload"
 import '../css/Navbar.css';
+import Link from 'next/link'
 
 function Navbar() {
     return (
         <div className="navbar flex-column d-flex align-items-start justify-content-start flex-nowrap">
             <label className="text-white mb-2 pt-2">Recommanded</label>
-            <NavLink to="/home">
+            <Link href="/">
                 <label className="text-secondary py-2 d-flex f-14"><HomeIcon className="me-1"/>Home</label>
-            </NavLink>
-            <NavLink to="/artist">
+            </Link>
+            <Link href="/artist">
                 <label className="text-secondary py-2 d-flex f-14"><PermIdentityIcon className="me-1"/>Artist</label>
-            </NavLink>
-            <NavLink to="/search">
+            </Link>
+            <Link href="/search">
                 <label className="text-secondary py-2 d-flex f-14"><SearchIcon className="me-1"/>Search</label>
-            </NavLink>
-            <NavLink to="/library">
+            </Link>
+            {/* <Link href="/library">
                 <label className="text-secondary py-2 d-flex f-14"><AlbumIcon className="me-1"/>Library</label>
-            </NavLink>
+            </Link> */}
 
             <label className="text-white py-2 mt-3">My Library</label>
-            <NavLink to="/likedsong">
+            <Link href="/likedsong">
                 <label className="text-secondary py-2 d-flex f-14"><AlbumIcon className="me-1"/>Liked Song</label>
-            </NavLink>
-            <NavLink to="/recent">
+            </Link>
+            <Link href="/recent">
                 <label className="text-secondary py-2 d-flex f-14"><AlbumIcon className="me-1"/>Recently Played</label>
-            </NavLink>
+            </Link>
+            <Link href="/uploadSong">
+                <label className="text-secondary py-2 d-flex f-14"><Upload className="me-1"/>Upload Song</label>
+            </Link>
         </div>
     )
 }

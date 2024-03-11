@@ -1,4 +1,4 @@
-import React from 'react';
+"use client"
 import {togglePlay} from './helper';
 import { useStateValue } from '../context/StateProvider';
 

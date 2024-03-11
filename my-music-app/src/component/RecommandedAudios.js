@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+"use client"
+import { useEffect, useState } from 'react';
+import axios from '@/utility/axios';
 import AudioList from './AudioList';
 import '../css/RecommendedAudios.css';
 
@@ -12,7 +13,6 @@ function RecommandedAudios() {
 				setPlaylist(res.data);
 			})
 	}, [])
-	console.log(playlist,"playlist")
 
 	return (
 		<div className="recommanded px-3 px-md-4 px-lg-4 overflow-auto" >
