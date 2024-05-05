@@ -6,6 +6,7 @@ import { useStateValue } from '@/context/StateProvider';
 import AudioController from "@/component/AudioController";
 import { StateProvider } from "@/context/StateProvider";
 import reducer, { initialState } from '@/context/reducer';
+import { isMobile } from "@/utility/helper";
 
 const CommonComponents = ({ children }: { children: React.ReactNode }) => {
     const [state] = useStateValue();
@@ -14,7 +15,7 @@ const CommonComponents = ({ children }: { children: React.ReactNode }) => {
         <div className="App">
             <Header />
             <div className="d-flex" style={height}>
-                {window.innerWidth < 720 ?
+                {isMobile() ?
                     <NavbarMobile /> : <Navbar />
                 }
 

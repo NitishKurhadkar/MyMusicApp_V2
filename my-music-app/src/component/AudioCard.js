@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStateValue } from "../context/StateProvider";
-import { togglePlay } from './helper';
+import { togglePlay } from '../utility/helper';
 import '../css/AudioCard.css';
 import '../css/icon.css';
 

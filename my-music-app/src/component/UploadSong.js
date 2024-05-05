@@ -1,12 +1,25 @@
 "use client";
+// import axios from "@/utility/axios";
+import axios from "axios"
 import { useState } from "react";
 
 const UploadSong = () => {
     const [formData, setFormData] = useState({});
     const [isSongUploaded, setIsSongUploaded] = useState()
-    const handleSubmit = () => {
+    const handleSubmit = async(e) => {
+        e.preventDefault();
         if (formData.albumName && formData.artistName && formData.artistImage && formData.albumArtistImage) {
-            setIsSongUploaded(true)
+            // setIsSongUploaded(true)
+            const formDataInstance = new FormData();
+            formDataInstance.append("albumName",formData.albumName)
+            formDataInstance.append("artistName",formData.artistName)
+            formDataInstance.append("songName",formData.songName)
+            formDataInstance.append("artistImg",formData.artistImage)
+            formDataInstance.append("albumImage",formData.albumArtistImage)
+            formDataInstance.append("song",formData.song)
+
+            const res = await axios.post('https://my-music-app-server-6yia.vercel.app/uploadSong', formDataInstance)
+            // debugger
         }
     }
     return (
@@ -32,11 +45,15 @@ const UploadSong = () => {
                             </div>
                             <div className="form-group d-flex flex-column mb-4">
                                 <label htmlFor="artist-image" className='text-light mb-1'>Artist Image *</label>
-                                <input id="artist-image" className='text-light' type="file" name="img" accept="image/*" onChange={e => setFormData(prev => ({ ...prev, artistImage: e.target.value }))} />
+                                <input id="artist-image" className='text-light' type="file" name="artistImg" accept="image/*" onChange={e => setFormData(prev => ({ ...prev, artistImage: e.target.files[0] }))} />
                             </div>
                             <div className="form-group d-flex flex-column mb-4">
                                 <label htmlFor="artist-image" className='text-light mb-1'>Album / Artist Image *</label>
-                                <input id="artist-image" aria-describedby="component-error-text" className='text-light' type="file" name="img" accept="image/*" onChange={e => setFormData(prev => ({ ...prev, albumArtistImage: e.target.value }))} />
+                                <input id="artist-image" aria-describedby="component-error-text" className='text-light' type="file" name="albumImage" accept="image/*" onChange={e => setFormData(prev => ({ ...prev, albumArtistImage: e.target.files[0] }))} />
+                            </div>
+                            <div className="form-group d-flex flex-column mb-4">
+                                <label htmlFor="song" className='text-light mb-1'>Song *</label>
+                                <input id="song" aria-describedby="component-error-text" className='text-light' type="file" name="song" accept="audio/*" onChange={e => setFormData(prev => ({ ...prev, song: e.target.files[0] }))} />
                             </div>
                             <button type="submit" className="btn btn-secondary" onClick={handleSubmit}>Submit</button>
                         </form>

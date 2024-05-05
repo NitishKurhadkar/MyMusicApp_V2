@@ -12,7 +12,7 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import CircularProgress from '@mui/material/CircularProgress';
-import { togglePlay } from './helper';
+import { isMobile, togglePlay } from '../utility/helper';
 import axios from '@/utility/axios';
 import "../css/AudioController.css";
 import '../css/icon.css';
@@ -112,7 +112,7 @@ function AudioController() {
 
     const showSongCard = (e) => {
         const controlButton = e.target.closest(".control_buttons");
-        if (window.innerWidth < 720 && controlButton === null)
+        if (isMobile() && controlButton === null)
             setIsShowSongCard(!isShowSongCard)
     }
 
@@ -120,7 +120,7 @@ function AudioController() {
         if (audioEl.current) {
             if (state.playStatus) {
                 audioEl.current.play()
-                    .then(res => axios.post('saveSongDuration', { name: state.playlist[state.currentSongIndex].name, duration: audioEl.current.duration }))
+                    .then(res => axios.post('https://my-music-app-server-6yia.vercel.app/saveSongDuration', { name: state.playlist[state.currentSongIndex].name, duration: audioEl.current.duration }))
 
                 if (state.playlistName !== "recently") {
                     dispatch({

@@ -1,5 +1,5 @@
 "use client"
-import {togglePlay} from './helper';
+import {togglePlay} from '../utility/helper';
 import { useStateValue } from '../context/StateProvider';
 
 const LikedSong = () => {

@@ -7,7 +7,7 @@ import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { togglePlay } from './../helper';
+import { togglePlay } from '../../utility/helper';
 import CloseIcon from '@mui/icons-material/Close';
 import '../../css/icon.css';
 import './SongDetails.css'
