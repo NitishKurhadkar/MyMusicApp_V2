@@ -37,6 +37,10 @@ const pauseSong = (state, dispatch, index) => {
 }
 
 export const isMobile = () => {
-    return typeof(window) != undefined && window.innerWidth < 720 ? true : false;
+    try {
+        return window.innerWidth < 720 ? true : false;
+    } catch (err) {
+        return false
+    }
 }
 

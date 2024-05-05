@@ -77,9 +77,9 @@ const Search = () => {
                                 <h4 className="text-white">Albums</h4>
                                 <div className="grid pt-1">
                                     {
-                                        state.searchArtistList.map((artist) => {
+                                        state.searchArtistList.map((artist, index) => {
                                             return (
-                                                <div className="p-3 rounded-3 audiocard">
+                                                <div key={index} className="p-3 rounded-3 audiocard">
                                                     <img className="rounded-3 w-100" src={artist.artistImg} alt="" onClick={() => openPlaylist("artist", artist.artistName)} />
                                                     <p className="pt-2 text-white text-truncate mb-0" title={artist.artistName}>{artist.artistName}</p>
                                                 </div>)
@@ -93,9 +93,9 @@ const Search = () => {
                                 <h4 className="text-white">Movies</h4>
                                 <div className="grid pt-1">
                                     {
-                                        state.searchMovieList.map((movie) => {
+                                        state.searchMovieList.map((movie, index) => {
                                             return (
-                                                <div className="p-3 rounded-3 audiocard">
+                                                <div key={index} className="p-3 rounded-3 audiocard">
                                                     <img className="rounded-3 w-100" src={movie.img} alt="" onClick={() => openPlaylist("movies", movie.name)} />
                                                     <p className="pt-2 text-white text-truncate mb-0" title={movie.name}>{movie.name}</p>
                                                 </div>)

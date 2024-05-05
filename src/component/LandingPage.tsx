@@ -24,7 +24,7 @@ const CommonComponents = ({ children }: { children: React.ReactNode }) => {
             </div>
             {/* <Header />
             <div className="d-flex" style={height}>
-                {window.innerWidth < 720 ?
+                {isMobile() ?
                     <NavbarMobile /> : <Navbar />
                 }
                 {children}

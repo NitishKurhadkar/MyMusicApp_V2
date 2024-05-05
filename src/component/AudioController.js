@@ -151,7 +151,7 @@ function AudioController() {
                     <p className="f-lato-r mb-0 f-16">{state.playlist[state.currentSongIndex].name}</p>
                     <p className="f-14 f-lato-r mb-0">{state.playlist[state.currentSongIndex].artistName}</p>
                 </div>
-                {window.innerWidth > 720 ? state.likedSongPlaylist.some((song) => song.id === state.playlist[state.currentSongIndex].id) ?
+                {isMobile() ? state.likedSongPlaylist.some((song) => song.id === state.playlist[state.currentSongIndex].id) ?
                     <FavoriteIcon className="ms-3 text-danger" onClick={dislikeSong} /> :
                     <FavoriteBorderIcon className="ms-3" onClick={likeSong} /> : null
                 }
@@ -167,7 +167,7 @@ function AudioController() {
                     }
                     <SkipNextIcon onClick={playNextSong} /></div>
                 <div className="seekbar_container w-100">
-                    {window.innerWidth > 720 ?
+                    {isMobile() ?
                         <label className="pe-3 f-14 f-lato-r">{songTimeConvertInMinAndSec(songPlayingTime)}</label> : null
                     }
 
@@ -177,13 +177,13 @@ function AudioController() {
                         onChangeCommitted={handleAudioCurrentTime}
                     />
                     <input type="range" value={songPlayingTime} max={audioEl.current !== null && !isNaN(audioEl.current.duration) ? audioEl.current.duration : 0} onChange={handleSeekbarTime} onMouseUp={handleAudioCurrentTime} />
-                    {window.innerWidth > 720 ?
+                    {isMobile() ?
                         <label className="ps-3 f-14 f-lato-r">{audioEl.current !== null && !isNaN(audioEl.current.duration) ? songTimeConvertInMinAndSec(audioEl.current.duration) : "00:00"}</label>
                         : null
                     }
                 </div>
             </div>
-            {window.innerWidth > 720 ?
+            {isMobile() ?
                 <div className="volume">
                     {audioEl.current !== null ? audioEl.current.volume === 0 ? <VolumeOffIcon /> : audioEl.current.volume <= 0.5 ? <VolumeDownIcon /> : <VolumeUp /> : <VolumeUp />}
                     <Slider defaultValue={1} max={1} step={0.01} onChange={(e, newValue) => audioEl.current.volume = newValue} />
