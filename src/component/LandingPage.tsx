@@ -10,7 +10,7 @@ import { isMobile } from "@/utility/helper";
 
 const CommonComponents = ({ children }: { children: React.ReactNode }) => {
     const [state] = useStateValue();
-    const height = state.currentSongIndex !== null ? { height: 'calc( 100% - 71px)' } : { height: '100%' };
+    const height = state.currentSongIndex !== null ? { height: 'calc( 100% - 120px)' } : { height: '100%' };
     return (
         <div className="App">
             <Header />

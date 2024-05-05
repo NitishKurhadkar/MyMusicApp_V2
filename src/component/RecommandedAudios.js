@@ -15,7 +15,7 @@ function RecommandedAudios() {
 	}, [])
 
 	return (
-		<div className="recommanded px-3 px-md-4 px-lg-4 overflow-auto" >
+		<div className="recommanded px-3 px-md-4 px-lg-4 overflow-auto pb-5" >
 			{playlist !== null ?
 				<>
 					<AudioList playlist={playlist.artistList} listName="Popular Artists" album="artist" />

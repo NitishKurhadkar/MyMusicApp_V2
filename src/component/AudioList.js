@@ -28,7 +28,7 @@ const AudioList = ({ playlist, listName, album }) => {
     }
 
     return (
-        <div className="py-3">
+        <div className="py-4 py-sm-3">
             <div className="d-flex align-items-center">
                 <h3 className="text-white mb-0">{listName}</h3>
                 <ChevronLeftIcon id="left" className="text-light f-35 pr-10 ms-auto" onClick={scrollLeft} />

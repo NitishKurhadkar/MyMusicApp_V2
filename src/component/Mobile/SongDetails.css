@@ -1,15 +1,15 @@
 .songdetails {
-    background-color: #3A3A3D;
+    background-color: #262628;
     z-index: 2;
-    border-radius: 15px 15px 0 0;
     animation: expand 0.8s forwards;
     -webkit-animation: expand 0.8s forwards;
     position: fixed;
+    display: flex;
 }
 
 .songdetails img {
-    width: 70%;
-    width: 70%;
+    width: 90%;
+    margin-bottom: 25%;
 }
 
 @keyframes expand {

@@ -13,7 +13,7 @@ const nextConfig = {
         headers: headers
       },
       {
-        source: "https://my-music-app-v2.vercel.app/:path*",
+        source: "/my-music-app-v2.vercel.app/:path*",
         headers: headers
       },
       {

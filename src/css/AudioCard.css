@@ -37,6 +37,12 @@
 }
 
 @media (max-width: 720px){
+    .songNameDiv{
+        max-width: calc(100% - 95px);
+    }
+    .songNameDiv .songNameText{
+        font-size: 14px !important;
+    }
     .audiocard{
         width: 170px;
         height: 210px;
@@ -50,6 +56,6 @@
 
     .songContainer{
         position: absolute;
-        bottom: 62px;
+        bottom: 59px;
     }
 }

@@ -1,12 +1,16 @@
 .searchbar{
     background: #353535;
-    border-radius: 22px;
+    border-radius: 5px;
     border: none;
     min-width: 280px;
     outline: none;
     top: 8px;
     z-index: 2;
     color: #ffff;
+    @media(max-width: 720px){
+        min-width: calc(100% - 40px);
+        top: 55px;
+    }
 }
 
 .searchbox .audiocard img {
@@ -31,6 +35,6 @@
 
 @media (max-width: 720px) {
     .searchbox h4 {
-        margin-top: 42px;
+        margin-top: 100px;
     }
 }

@@ -16,6 +16,14 @@
     color: #28d4c9 !important;
 }
 
+.navbarmobile+.artist .grid{
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.navbarmobile+.artist{
+    margin-bottom: 65px;
+}
+
 .navbarmobile .active::before {
     content: "";
     position: absolute;
