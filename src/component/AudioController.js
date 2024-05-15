@@ -120,7 +120,7 @@ function AudioController() {
         if (audioEl.current) {
             if (state.playStatus) {
                 audioEl.current.play()
-                    .then(res => axios.post('https://my-music-app-server-6yia.vercel.app/saveSongDuration', { name: state.playlist[state.currentSongIndex].name, duration: audioEl.current.duration }))
+                    .then(res => axios.post('http://localhost:5000/saveSongDuration', { name: state.playlist[state.currentSongIndex].name, duration: audioEl.current.duration }))
 
                 if (state.playlistName !== "recently") {
                     dispatch({

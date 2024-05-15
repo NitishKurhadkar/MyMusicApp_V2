@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInterceptorInstance = axios.create({
-  baseURL: 'https://my-music-app-server-6yia.vercel.app/', // Replace with your API base URL
+  baseURL: 'http://localhost:5000/', // Replace with your API base URL
 });
 
 

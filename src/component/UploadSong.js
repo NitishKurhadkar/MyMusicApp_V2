@@ -17,12 +17,18 @@ const UploadSong = () => {
             formDataInstance.append("artistImg",formData.artistImage)
             formDataInstance.append("albumImage",formData.albumArtistImage)
             formDataInstance.append("song",formData.song)
-            axios({
-                method: 'POST',
-                url: `https://my-music-app-server-6yia.vercel.app/uploadSong`,
-                withCredentials: false,
-                data: formDataInstance
-              });
+            
+            // fetch({
+            //     method: 'POST',
+            //     url: `http://localhost:5000/uploadSong`,
+            //     withCredentials: false,
+            //     data: formDataInstance
+            //   });
+            fetch("/api/uploadSong", {
+                method: "POST", // *GET, POST, PUT, DELETE, etc.
+                mode: "no-cors",
+                body: formDataInstance
+            })
             // const res = await axios.post('/uploadSong', formDataInstance)
             // debugger
         }
